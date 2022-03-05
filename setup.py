@@ -3,8 +3,6 @@ import sys
 
 from setuptools import find_packages, setup
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "mon_petit_potager"))
-print(sys.path)
 from version import VERSION
 
 with open("README.md", "r", encoding="utf-8") as fh:

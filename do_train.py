@@ -15,8 +15,7 @@ from stable_baselines3.common.vec_env.util import (
     obs_space_info,
 )
 
-import mon_petit_potager
-
+import foolish_garden
 
 parser = argparse.ArgumentParser(description="Script to train PPO agent")
 
@@ -64,6 +63,8 @@ eval_callback = EvalCallback(
 if args["model_load"] != "":
     model = PPO.load(args["model_load"])
 else:
-    model = PPO("MlpPolicy", env, verbose=1, tensorboard_log="./tensorboard_logs/")
+    model = PPO(
+        "MultiInputPolicy", env, verbose=1, tensorboard_log="./tensorboard_logs/"
+    )
 
 model.learn(total_timesteps=args["step_train"], callback=eval_callback)

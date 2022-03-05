@@ -60,8 +60,6 @@ class MonPetitPotagerEnv(Env):
             self.n_x * self.n_y * self.n_veggies,
         )
 
-        print(self.observation_space["image"].shape)
-
         self.one = np.ones(self.observation_space["image"].shape)
 
         # Create a canvas to render the environment images upon
@@ -110,7 +108,9 @@ class MonPetitPotagerEnv(Env):
                         self.garden[k, l]
                     ]
 
-        print(f"Happyness level: {happyness_level}")
+        self.happyness_level = happyness_level
+
+        # print(f"Happyness level: {happyness_level}")
 
         # return the observation
         return obs
@@ -187,9 +187,11 @@ class MonPetitPotagerEnv(Env):
             np.abs(self.targets - self.count_veggies / self.total_veggies)
         )
 
+        self.happyness_level += delta_happyness_level
+
         obs = {
             "image": 2 * self.garden / (self.n_veggies - 1) - self.one,
             "perfo": self.targets - self.count_veggies / self.total_veggies,
         }
 
-        return obs, reward, done, {}
+        return obs, reward, done, {"happiness_level": self.happyness_level}

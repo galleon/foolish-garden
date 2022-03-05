@@ -1,0 +1,33 @@
+# Mac
+.DS_Store
+
+# IDE
+.*/
+!.vuepress/
+
+# Github
+.github/
+
+# Python
+__pycache__/
+**/.python-version
+
+# Temp files
+*.tmp
+**/.python-version
+
+# Build files
+build/
+dist/
+
+# Web docs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Data files
+**/*.dat
+**/logs
+**/tensorboard_logs
+**/trained_models
